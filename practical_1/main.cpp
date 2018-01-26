@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-#include <SMFL/Graphics.hpp>
+#include <SFML/Graphics.hpp>
 
 int main(){
   sf::RenderWindow window(sf::VideMode(200,200),"SFML works");
