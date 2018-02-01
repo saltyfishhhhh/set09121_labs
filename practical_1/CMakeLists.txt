@@ -1,27 +1,25 @@
 cmake_minimum_required(version 3.9)
+# require modern c++
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(Games_Engineering)
 
-<<<<<<< HEAD
 #### setup Directories
 ##main output directory
+
 SET(OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/")
 ## output all DLLs from all libs into main build folder
-=======
-SET(OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/")
 
->>>>>>> parent of 107fdb3... 1
 SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${OUTPUT_DIRECTORY})
-
-
 ## add external dependencies ###
+
 add_subdirectory("lib/sfml")
 set(SFML_INCS "lib/sfml/include")
 link_directories("${CMKAE_BINARY_DIR}/lib/sfml/lib")
 
+##practical 1##
 file(GLOB_RECURSE SOURCES practical_1/*.cpp practical_1/*.h)
 add_executable(PRACTICAL_1 ${SOURCES})
-target_include_directories(PRACTICAL_1 PRICATE ${SFML_INCS})
+target_include_directories(PRACTICAL_1 PRIVATE ${SFML_INCS})
 target_link_libraries(PRACTICAL_1 sfml - graphics)
