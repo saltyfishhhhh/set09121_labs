@@ -1,4 +1,4 @@
-cmake_minimum_required(version 3.9)
+cmake_minimum_required(VERSION 3.9)
 # require modern c++
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -7,13 +7,12 @@ project(Games_Engineering)
 
 #### setup Directories
 ##main output directory
-
 SET(OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/")
 ## output all DLLs from all libs into main build folder
-
 SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${OUTPUT_DIRECTORY})
-## add external dependencies ###
 
+
+## add external dependencies ###
 add_subdirectory("lib/sfml")
 set(SFML_INCS "lib/sfml/include")
 link_directories("${CMKAE_BINARY_DIR}/lib/sfml/lib")
