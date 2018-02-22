@@ -30,15 +30,22 @@ void Load(){
         p.setOrigin(paddlesSize / 2.f);
 
     }
-
+    //set.size and origin of ball
     ball.setRadius(ballRadius -3);
     ball.setOrigin(ballRadius /2, ballRadius / 2);
-
+    //reset paddle postion
     paddles[0].setPositoin(10 + paddlesSize.x / 2, gameHeight / 2);
     paddles[1].setPositoin(...);
-
+    //reset ball positon
     ball.setPositoin(...);
-    ballVelocity = {(server ? 100.0f : -100.0f),60.0f};
+    ballVelocity = {(server ? 100.of : -100.of),60.of};
+    
+    //load font-fave form res dir
+    font.loadFromFile("res/fonts/RebotoMono-Regular,ttf");
+    //set text elemetn to use font
+    text,setFont(font);
+    //set the character size to 24 pixeles
+    text.setCharactersize(24);
 }
 
 
@@ -51,13 +58,14 @@ void Update(RenderWindow &window){
     while(window.pollEvent(event)){
         if(event.type == Event::Colosed){
             windows.close();
-            return:
+            return;
         }
     }
     //quit via ESC key
     if(keyboard::isKeyPressed(Keyboard::Escape)){
         windows.close();
     }
+    
     //handle paddle movement
     float direction = 0,0f;
     if(keyboard::isKeyPressed(controls[0])){
@@ -67,8 +75,13 @@ void Update(RenderWindow &window){
         direction++:
     }
     paddles[0].move(0, direction * paddleSpeed * dt);
+}
+
         
     ball.move(ballVelocity * dt);
+
+
+
     //check ball collision
     const float bx = ball.getPosition().x;
     const float by = ball.getPosition().y;
@@ -82,12 +95,15 @@ void Update(RenderWindow &window){
         ballVelocity.x *= 1.1f;
         ballVelocity.y *= -1.1f;
         ball.move(0,10);
-    }else if (bx > gameWidth){
+    }
+    else if (bx > gameWidth){
         //right wall
         reset();
     }else if (bx < 0){
         //left wall
         reset():
+        
+        
     }else if (
         //ball is inline or behind paddle
               bx < paddlesSize.x &&
@@ -101,10 +117,28 @@ void Update(RenderWindow &window){
         //bounce off tight paddle
     }
     
+
+
+void reset(){
+    for(auto &p : paddles){
+        p.setSize(paddlesSize - Vector2f(3, 3));
+        p.setOrigin(paddlesSize / 2.f);
+        //update score text
+        text.setString(...);
+        //keep score text contered
+        text.setPositoin((gameWidth * 0.5f) - (text.getLocaBounds().width *0.5f), 0);
     }
 
-
-
+//set.size and origin of ball
+ball.setRadius(ballRadius -3);
+ball.setOrigin(ballRadius /2, ballRadius / 2);
+//reset paddle postion
+paddles[0].setPositoin(10 + paddlesSize.x / 2, gameHeight / 2);
+paddles[1].setPositoin(...);
+//reset ball positon
+ball.setPositoin(...);
+ballVelocity = {(server ? 100.of : -100.of),60.of};
+}
 
 void Render(RenderWindow &window){
     //draw everthing
